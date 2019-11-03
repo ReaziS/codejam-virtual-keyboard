@@ -1,0 +1,72 @@
+.keyboard {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.keyboard textarea {
+  width: 600px;
+  height: 200px;
+}
+
+.keyboard .keyboard-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.keyboard .keyboard-wrapper .first-line {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 10px;
+  -ms-grid-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 80px;
+      grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 80px;
+  margin-bottom: 15px;
+}
+
+.keyboard .keyboard-wrapper .first-line div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background: #444;
+}
+
+.keyboard .keyboard-wrapper .first-line .pressed {
+  background: black;
+}
+
+.keyboard .keyboard-wrapper .second-line {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 10px;
+  -ms-grid-columns: 60px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 60px;
+      grid-template-columns: 60px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 60px;
+}
+
+.keyboard .keyboard-wrapper .second-line div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background: #444;
+}
+
+.keyboard .keyboard-wrapper .second-line .pressed {
+  background: black;
+}
+/*# sourceMappingURL=style.css.map */
