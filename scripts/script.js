@@ -1,3 +1,5 @@
+//import { rows } from './keyboardInit';
+
 const keyRow1 = [
     ['Backquote', 'ё', 'Ё','`','~'],
     ['Digit1','1','!','1','!'],
@@ -11,9 +13,8 @@ const keyRow1 = [
     ['Digit9','9','(','9','('],
     ['Digit0','0',')','0',')'],
     ['Minus','-','+','=','+'],
-    ['Equal=','=','+','=','+'],
+    ['Equal','=','+','=','+'],
     ['Backspace','Backspace','Backspace','Backspace','Backspace'],
-
 ];
 const keyRow2 = [
     ['Tab', 'Tab', 'Tab', 'Tab' , 'Tab'],
@@ -30,7 +31,7 @@ const keyRow2 = [
     ['BracketLeft', 'х', 'Х', '[' , '{'],
     ['BracketRight', 'ъ', 'Ъ', ']' , '}'],
     ['Backslash',' U+2216', '|', '/' , 'Q'],
-]
+];
 const keyRow3 = [
     ['CapsLock', 'CapsLock', 'CapsLock', 'CapsLock' , 'CapsLock'],
     ['KeyA', 'ф', 'Ф', 'a' , 'A'],
@@ -45,7 +46,7 @@ const keyRow3 = [
     ['Semicolon', 'ж', 'Ж', ';' , ':'],
     ['Quote', 'э', 'Э', '' , '"'],
     ['Enter', 'Enter', 'Enter', 'Enter' , 'Enter'],
-]
+];
 const keyRow4 = [
     ['ShiftLeft', 'ShiftLeft', 'ShiftLeft', 'ShiftLeft' , 'ShiftLeft'],
     ['KeyZ', 'я', 'Я', 'z' , 'Z'],
@@ -59,77 +60,143 @@ const keyRow4 = [
     ['Period', 'ю', 'Ю', '.' , '>'],
     ['Slash', ',', '.', '/' , '?'],
     ['ShiftRight', 'ShiftRight', 'ShiftRight', 'ShiftRight' , 'ShiftRight'],
-]
+];
+const keyRow5 = [
+    ['ControlLeft', 'ControlLeft', 'ControlLeft', 'ControlLeft' , 'ControlLeft'],
+    ['Meta', 'Win', 'Win', 'Win' , 'Win'],
+    ['AltLeft', 'AltLeft', 'AltLeft', 'AltLeft' , 'AltLeft'],
+    ['Space', 'Space', 'Space', 'Space' , 'Space'],
+    ['KeyV', 'м', 'М', 'v' , 'V'],
+    ['KeyV', 'м', 'М', 'v' , 'V'],
+    ['KeyV', 'м', 'М', 'v' , 'V'],
+    ['KeyV', 'м', 'М', 'v' , 'V'],
+    ['KeyV', 'м', 'М', 'v' , 'V'],
 
-
-let localization = true;
-let firstStr = [];
+];
 let keyRow1Space = document.getElementById('keyRow1');
 let keyRow2Space = document.getElementById('keyRow2');
 let keyRow3Space = document.getElementById('keyRow3');
 let keyRow4Space = document.getElementById('keyRow4');
+let keyRow5Space = document.getElementById('keyRow5');
+/* every row goes to array */
+let keyboardStrings = [keyRow1,keyRow2,keyRow3,keyRow4,keyRow5];
+let keyboardStringWrapper = [keyRow1Space, keyRow2Space, keyRow3Space, keyRow4Space, keyRow5Space];
+
+/* Localization   true = russian false = english */
+let localization = Boolean;
+if(localStorage.getItem('localization')) {
+    localization =  eval(localStorage.getItem('localization'));
+ } else {
+     localization = true;
+ }
 let textInput = document.getElementById('text');
+//let workArea = document.getElementById('workspace');
 let isShift = false;
+let prevButton = '';
 document.addEventListener('keydown', (e) => {
-    if(e.key == 'Shift') {isShift = true;}
-    if(localization) {
-        console.log(e.code);
-            let currenButton;
-            currenButton = findButton(e.code);
-            currenButton.classList.add('pressed');
-            textInput.value += e.key;
-    }        
+    console.log(e);
+    if(e.key == 'Shift') {
+        isShift = true;
+        generateButtons(localization);
+        findButton(e, false);
+      
+        
+    } else if(e.key == 'CapsLock') {
+        isShift = !isShift;
+        generateButtons(localization);
+        isShift ? findButton(e, false): loseButton(e, false);
+        e.preventDefault();
+    } else if (e.key == 'Backspace') {
+        textInput.value = textInput.value.slice(0,-1);
+        findButton(e, false);
+    } else if (e.key == 'Alt') {
+        if (prevButton == 'Shift') {
+            localization = !localization;
+            localStorage.setItem('localization', localization);
+        }
+    } else {
+        findButton(e, true);
+    }
+    prevButton = e.key;
+});
+document.addEventListener('keyup', (e) => {
+    if(e.key == 'Shift') {
+        isShift = false;
+        generateButtons(localization);
+        loseButton(e);
+
+    } else if(e.key == 'CapsLock') {
+        e.preventDefault();
+    } else if (e.key == 'Backspace') {
+        textInput.value = textInput.value.slice(0,-1);
+        loseButton(e);
+    } else {
+        loseButton(e);
+    } 
+  
 });
 document.addEventListener('keypress', (e) => {
     e.preventDefault();
-})
-function findButton(button) {
-    return document.getElementById(button);
-    
-}
-document.addEventListener('keyup', (e) => {
-    isShift == false;
+});
+function findButton(e, isDraw) {
     let currenButton;
-    currenButton = findButton(e.code);
-    currenButton.classList.remove('pressed');
-})
-function generateButtons() {
-    generateRowOne();
-    generateRowTwo();
+        currenButton = document.getElementById(e.code);
+        currenButton.classList.remove('pressed-animation-back');
+        currenButton.classList.add('pressed-animation');
+        currenButton.addEventListener('animationend', () => {
+            currenButton.classList.add('pressed');
+        });
+        isDraw ? textInput.value += e.key : textInput.value;  
 }
-generateButtons();
+function loseButton(e) {
+    let currenButton;
+        currenButton = document.getElementById(e.code);
+        currenButton.classList.remove('pressed-animation');
+        currenButton.classList.add('pressed-animation-back');
+        currenButton.addEventListener('animationend', () => {
+            currenButton.classList.remove('pressed');
+        });
+}
+let btns = [];
+function generateButtons(localization) {
+    keyboardStrings.map((keyboardString, i) => {
+    keyboardStringWrapper[i].innerHTML = '';
+        keyboardString.forEach((button) => {
+            let z = document.createElement('div'); 
+            if (localization) {
+                if (isShift) {
+                    z.innerHTML = button[2];
+                    mouseDown(button[2]);
+                } else {
+                    z.innerHTML = button[1];
+                    mouseDown(button[1]);
+                }
+            } else {
+                if (isShift) {
+                    z.innerHTML = button[4];
+                    mouseDown(button[4]);
+                } else {
+                    z.innerHTML = button[3];
+                    mouseDown(button[3]);
 
-function generateRowOne() {
-    keyRow1.forEach(button => {
-        let z = document.createElement('div'); 
-        firstStr.push(z)
-        z.innerHTML = button[1];
-        z.setAttribute('id', button[0]);
-        z.addEventListener('mousedown', () => {
-            z.classList.add('pressed');
-            textInput.value += button[1];
+                }
+            }
+            z.setAttribute('id', button[0]);
+            /* ADD EVENTS */
+            function mouseDown(param) {
+                z.addEventListener('mousedown', () => {
+                    z.classList.add('pressed');
+                    console.log(param);
+                    textInput.value += param;
+                });
+            }
+            z.addEventListener('mouseup', () => {
+                z.classList.remove('pressed');
+            });
+            /* Append node to DOM */
+            btns.push(z);
+                keyboardStringWrapper[i].appendChild(z);
         });
-        z.addEventListener('mouseup', () => {
-            z.classList.remove('pressed');
-        });
-        keyRow1Space.appendChild(z);
-        
-    })
+    });
 }
-function generateRowTwo() {
-    keyRow2.forEach(button => {
-        let z = document.createElement('div'); 
-        firstStr.push(z)
-        z.innerHTML = button[1];
-        z.setAttribute('id', button[0]);
-        z.addEventListener('mousedown', () => {
-            z.classList.add('pressed');
-            textInput.value += button[1];
-        });
-        z.addEventListener('mouseup', () => {
-            z.classList.remove('pressed');
-        });
-        keyRow2Space.appendChild(z);
-        
-    })
-}
+generateButtons(localization);
