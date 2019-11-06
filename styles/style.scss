@@ -1,0 +1,194 @@
+
+.keyboard {
+    margin: 0 auto;
+    max-width: 1000px;
+    textarea {
+        width: 730px;
+        height: 200px;
+    }
+    .keyboard-wrapper {
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+    color: wheat;
+        .first-line {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 80px;
+            margin-bottom: 15px;
+            div {
+                display: flex;
+                justify-content: center;
+                border-radius: 10px;
+                padding: 10px 20px;
+                background: #444;
+                transition: 0.2s;
+                cursor: pointer;
+            }
+            .pressed {
+                background: black;
+                border-radius: 40%;
+            }
+            .pressed-animation {
+                animation-name: onpress;
+                animation-duration: 1s;
+                transition-timing-function: ease-in-out;
+            }
+            .pressed-animation-back {
+                animation-name: onup;
+                animation-duration: 0.2s;
+                transition-timing-function: ease-in-out;
+            }
+        }
+        .second-line {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 60px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 60px;
+            margin-bottom: 15px;
+            div {
+                display: flex;
+                justify-content: center;
+                border-radius: 10px;
+                padding: 10px 20px;
+                background: #444;
+                transition: 0.2s;
+                cursor: pointer;
+            }
+            .pressed {
+                background: black;
+                border-radius: 40%;
+            }
+            .pressed-animation {
+                animation-name: onpress;
+                animation-duration: 1s;
+                transition-timing-function: ease-in-out;
+            }
+            .pressed-animation-back {
+                animation-name: onup;
+                animation-duration: 0.2s;
+                transition-timing-function: ease-in-out;
+            }
+        }
+        .third-line {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 80px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 90px;
+            margin-bottom: 15px;
+            div {
+                display: flex;
+                justify-content: center;
+                border-radius: 10px;
+                padding: 10px 20px;
+                background: #444;
+                transition: 0.2s;
+                cursor: pointer;
+            }
+            .pressed {
+                background: black;
+                border-radius: 40%;
+            }
+            .pressed-animation {
+                animation-name: onpress;
+                animation-duration: 1s;
+                transition-timing-function: ease-in-out;
+            }
+            .pressed-animation-back {
+                animation-name: onup;
+                animation-duration: 0.2s;
+                transition-timing-function: ease-in-out;
+            }
+        }
+        .fourth-line {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 100px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 70px;
+            margin-bottom: 15px;
+            div {
+                display: flex;
+                justify-content: center;
+                border-radius: 10px;
+                padding: 10px 20px;
+                background: #444;
+                transition: 0.2s;
+                cursor: pointer;
+                
+            }
+            .pressed {
+                background: black;
+                border-radius: 40%;
+            }
+            .pressed-animation {
+                animation-name: onpress;
+                animation-duration: 1s;
+                transition-timing-function: ease-in-out;
+            }
+            .pressed-animation-back {
+                animation-name: onup;
+                animation-duration: 0.2s;
+                transition-timing-function: ease-in-out;
+            }
+        }
+        .fifth-line {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 90px 40px 60px 250px  100px 40px 40px 40px;
+            margin-bottom: 15px;
+            div {
+                display: flex;
+                justify-content: center;
+                height: 50%;
+                border-radius: 10px;
+                padding: 10px 20px;
+                background: #444;
+                transition: 0.2s;
+                cursor: pointer;
+               
+            }
+            .pressed {
+                background: black;
+                border-radius: 40%;
+            }
+            .pressed-animation {
+                animation-name: onpress;
+                animation-duration: 1s;
+                transition-timing-function: ease-in-out;
+            }
+            .pressed-animation-back {
+                animation-name: onup;
+                animation-duration: 0.2s;
+                transition-timing-function: ease-in-out;
+            }
+            
+        }
+    }
+}
+
+@keyframes onpress {
+    from {
+        border-radius: 10px;
+        background:  linear-gradient(#222 100%, #444 0%);
+        color: wheat;
+        opacity: 1;
+    }
+    to {
+       border-radius: 40%;
+       background: linear-gradient(#222 0%, #444 100%);
+       color: white;
+       opacity: 0.6;
+
+    }
+}
+@keyframes onup {
+    from {
+        border-radius: 40%;
+        background: #222;
+        color: white;
+
+    }
+    to {
+        border-radius: 10px;
+        background: #444;
+        color: wheat;
+
+    }
+}

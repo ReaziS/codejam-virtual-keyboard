@@ -1,0 +1,320 @@
+.keyboard {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.keyboard textarea {
+  width: 730px;
+  height: 200px;
+}
+
+.keyboard .keyboard-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: wheat;
+}
+
+.keyboard .keyboard-wrapper .first-line {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 10px;
+  -ms-grid-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 80px;
+      grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 80px;
+  margin-bottom: 15px;
+}
+
+.keyboard .keyboard-wrapper .first-line div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background: #444;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.keyboard .keyboard-wrapper .first-line .pressed {
+  background: black;
+  border-radius: 40%;
+}
+
+.keyboard .keyboard-wrapper .first-line .pressed-animation {
+  -webkit-animation-name: onpress;
+          animation-name: onpress;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+.keyboard .keyboard-wrapper .first-line .pressed-animation-back {
+  -webkit-animation-name: onup;
+          animation-name: onup;
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+.keyboard .keyboard-wrapper .second-line {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 10px;
+  -ms-grid-columns: 60px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 60px;
+      grid-template-columns: 60px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 60px;
+  margin-bottom: 15px;
+}
+
+.keyboard .keyboard-wrapper .second-line div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background: #444;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.keyboard .keyboard-wrapper .second-line .pressed {
+  background: black;
+  border-radius: 40%;
+}
+
+.keyboard .keyboard-wrapper .second-line .pressed-animation {
+  -webkit-animation-name: onpress;
+          animation-name: onpress;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+.keyboard .keyboard-wrapper .second-line .pressed-animation-back {
+  -webkit-animation-name: onup;
+          animation-name: onup;
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+.keyboard .keyboard-wrapper .third-line {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 10px;
+  -ms-grid-columns: 80px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 90px;
+      grid-template-columns: 80px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 90px;
+  margin-bottom: 15px;
+}
+
+.keyboard .keyboard-wrapper .third-line div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background: #444;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.keyboard .keyboard-wrapper .third-line .pressed {
+  background: black;
+  border-radius: 40%;
+}
+
+.keyboard .keyboard-wrapper .third-line .pressed-animation {
+  -webkit-animation-name: onpress;
+          animation-name: onpress;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+.keyboard .keyboard-wrapper .third-line .pressed-animation-back {
+  -webkit-animation-name: onup;
+          animation-name: onup;
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+.keyboard .keyboard-wrapper .fourth-line {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 10px;
+  -ms-grid-columns: 100px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 70px;
+      grid-template-columns: 100px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 70px;
+  margin-bottom: 15px;
+}
+
+.keyboard .keyboard-wrapper .fourth-line div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background: #444;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.keyboard .keyboard-wrapper .fourth-line .pressed {
+  background: black;
+  border-radius: 40%;
+}
+
+.keyboard .keyboard-wrapper .fourth-line .pressed-animation {
+  -webkit-animation-name: onpress;
+          animation-name: onpress;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+.keyboard .keyboard-wrapper .fourth-line .pressed-animation-back {
+  -webkit-animation-name: onup;
+          animation-name: onup;
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+.keyboard .keyboard-wrapper .fifth-line {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 10px;
+  -ms-grid-columns: 90px 40px 60px 250px  100px 40px 40px 40px;
+      grid-template-columns: 90px 40px 60px 250px  100px 40px 40px 40px;
+  margin-bottom: 15px;
+}
+
+.keyboard .keyboard-wrapper .fifth-line div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 50%;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background: #444;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.keyboard .keyboard-wrapper .fifth-line .pressed {
+  background: black;
+  border-radius: 40%;
+}
+
+.keyboard .keyboard-wrapper .fifth-line .pressed-animation {
+  -webkit-animation-name: onpress;
+          animation-name: onpress;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+.keyboard .keyboard-wrapper .fifth-line .pressed-animation-back {
+  -webkit-animation-name: onup;
+          animation-name: onup;
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes onpress {
+  from {
+    border-radius: 10px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(100%, #222), color-stop(0%, #444));
+    background: linear-gradient(#222 100%, #444 0%);
+    color: wheat;
+    opacity: 1;
+  }
+  to {
+    border-radius: 40%;
+    background: -webkit-gradient(linear, left top, left bottom, from(#222), to(#444));
+    background: linear-gradient(#222 0%, #444 100%);
+    color: white;
+    opacity: 0.6;
+  }
+}
+
+@keyframes onpress {
+  from {
+    border-radius: 10px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(100%, #222), color-stop(0%, #444));
+    background: linear-gradient(#222 100%, #444 0%);
+    color: wheat;
+    opacity: 1;
+  }
+  to {
+    border-radius: 40%;
+    background: -webkit-gradient(linear, left top, left bottom, from(#222), to(#444));
+    background: linear-gradient(#222 0%, #444 100%);
+    color: white;
+    opacity: 0.6;
+  }
+}
+
+@-webkit-keyframes onup {
+  from {
+    border-radius: 40%;
+    background: #222;
+    color: white;
+  }
+  to {
+    border-radius: 10px;
+    background: #444;
+    color: wheat;
+  }
+}
+
+@keyframes onup {
+  from {
+    border-radius: 40%;
+    background: #222;
+    color: white;
+  }
+  to {
+    border-radius: 10px;
+    background: #444;
+    color: wheat;
+  }
+}
+/*# sourceMappingURL=style.css.map */
