@@ -4,7 +4,7 @@
 }
 
 .keyboard textarea {
-  width: 600px;
+  width: 730px;
   height: 200px;
 }
 
@@ -43,6 +43,7 @@
   background: #444;
   -webkit-transition: 0.2s;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .keyboard .keyboard-wrapper .first-line .pressed {
@@ -89,6 +90,7 @@
   background: #444;
   -webkit-transition: 0.2s;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .keyboard .keyboard-wrapper .second-line .pressed {
@@ -135,6 +137,7 @@
   background: #444;
   -webkit-transition: 0.2s;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .keyboard .keyboard-wrapper .third-line .pressed {
@@ -164,8 +167,8 @@
   display: -ms-grid;
   display: grid;
   grid-gap: 10px;
-  -ms-grid-columns: 110px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 110px;
-      grid-template-columns: 110px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 110px;
+  -ms-grid-columns: 100px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 70px;
+      grid-template-columns: 100px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 70px;
   margin-bottom: 15px;
 }
 
@@ -181,6 +184,7 @@
   background: #444;
   -webkit-transition: 0.2s;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .keyboard .keyboard-wrapper .fourth-line .pressed {
@@ -210,8 +214,8 @@
   display: -ms-grid;
   display: grid;
   grid-gap: 10px;
-  -ms-grid-columns: 60px 40px 60px 300px  40px 40px 40px 60px;
-      grid-template-columns: 60px 40px 60px 300px  40px 40px 40px 60px;
+  -ms-grid-columns: 90px 40px 60px 250px  100px 40px 40px 40px;
+      grid-template-columns: 90px 40px 60px 250px  100px 40px 40px 40px;
   margin-bottom: 15px;
 }
 
@@ -228,6 +232,7 @@
   background: #444;
   -webkit-transition: 0.2s;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .keyboard .keyboard-wrapper .fifth-line .pressed {

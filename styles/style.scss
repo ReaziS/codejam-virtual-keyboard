@@ -3,7 +3,7 @@
     margin: 0 auto;
     max-width: 1000px;
     textarea {
-        width: 600px;
+        width: 730px;
         height: 200px;
     }
     .keyboard-wrapper {
@@ -23,6 +23,7 @@
                 padding: 10px 20px;
                 background: #444;
                 transition: 0.2s;
+                cursor: pointer;
             }
             .pressed {
                 background: black;
@@ -51,6 +52,7 @@
                 padding: 10px 20px;
                 background: #444;
                 transition: 0.2s;
+                cursor: pointer;
             }
             .pressed {
                 background: black;
@@ -79,6 +81,7 @@
                 padding: 10px 20px;
                 background: #444;
                 transition: 0.2s;
+                cursor: pointer;
             }
             .pressed {
                 background: black;
@@ -98,7 +101,7 @@
         .fourth-line {
             display: grid;
             grid-gap: 10px;
-            grid-template-columns: 110px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 110px;
+            grid-template-columns: 100px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 70px;
             margin-bottom: 15px;
             div {
                 display: flex;
@@ -107,6 +110,7 @@
                 padding: 10px 20px;
                 background: #444;
                 transition: 0.2s;
+                cursor: pointer;
                 
             }
             .pressed {
@@ -127,7 +131,7 @@
         .fifth-line {
             display: grid;
             grid-gap: 10px;
-            grid-template-columns: 60px 40px 60px 300px  40px 40px 40px 60px;
+            grid-template-columns: 90px 40px 60px 250px  100px 40px 40px 40px;
             margin-bottom: 15px;
             div {
                 display: flex;
@@ -137,6 +141,7 @@
                 padding: 10px 20px;
                 background: #444;
                 transition: 0.2s;
+                cursor: pointer;
                
             }
             .pressed {

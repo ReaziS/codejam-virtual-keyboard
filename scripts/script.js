@@ -30,7 +30,7 @@ const keyRow2 = [
     ['KeyP', 'з', 'З', 'p' , 'P'],
     ['BracketLeft', 'х', 'Х', '[' , '{'],
     ['BracketRight', 'ъ', 'Ъ', ']' , '}'],
-    ['Backslash',' U+2216', '|', '/' , 'Q'],
+    ['Backslash','  &#92;', '|', '/' , 'Q'],
 ];
 const keyRow3 = [
     ['CapsLock', 'CapsLock', 'CapsLock', 'CapsLock' , 'CapsLock'],
@@ -59,20 +59,51 @@ const keyRow4 = [
     ['Comma', 'б', 'Б', ',' , '<'],
     ['Period', 'ю', 'Ю', '.' , '>'],
     ['Slash', ',', '.', '/' , '?'],
+
+    ['ArrowUp', '&#8593;', '&#8593;', '&#8593;' , '&#8593;'],
     ['ShiftRight', 'ShiftRight', 'ShiftRight', 'ShiftRight' , 'ShiftRight'],
+
+
 ];
 const keyRow5 = [
     ['ControlLeft', 'ControlLeft', 'ControlLeft', 'ControlLeft' , 'ControlLeft'],
-    ['Meta', 'Win', 'Win', 'Win' , 'Win'],
+    ['MetaLeft', 'Win', 'Win', 'Win' , 'Win'],
     ['AltLeft', 'AltLeft', 'AltLeft', 'AltLeft' , 'AltLeft'],
     ['Space', 'Space', 'Space', 'Space' , 'Space'],
-    ['KeyV', 'м', 'М', 'v' , 'V'],
-    ['KeyV', 'м', 'М', 'v' , 'V'],
-    ['KeyV', 'м', 'М', 'v' , 'V'],
-    ['KeyV', 'м', 'М', 'v' , 'V'],
-    ['KeyV', 'м', 'М', 'v' , 'V'],
+    ['ControlRight', 'ControlRight', 'ControlRight', 'ControlRight' , 'ControlRight'],
+
+    ['ArrowLeft', '&#8592;', '&#8592;', '&#8592;' , '&#8592;'],
+    ['ArrowDown', '&#8595;', '&#8595;', '&#8595;' , '&#8595;'],
+    ['ArrowRight', '&#8594;', '&#8594;', '&#8594;' , '&#8594;'],
 
 ];
+
+/* INIT BODY */
+
+//main section
+let bodyInit = document.getElementsByTagName('body')[0];
+let mainSection = document.createElement('section');
+mainSection.setAttribute('class', 'keyboard');
+bodyInit.appendChild(mainSection);
+//text area
+let textArea = document.createElement('textarea');
+textArea.setAttribute('id', 'text');
+mainSection.appendChild(textArea);
+//main div 
+let mainDiv = document.createElement('div');
+mainDiv.setAttribute('id', 'workspace');
+mainDiv.setAttribute('class', 'keyboard-wrapper');
+mainSection.appendChild(mainDiv);
+//keyboard rows
+let attributeArr = ['first-line', 'second-line', 'third-line', 'fourth-line', 'fifth-line'];
+for(let i = 0; i< 5; i++) {
+    let kRow = document.createElement('div');
+    kRow.setAttribute('id', `keyRow${i+1}`);
+    kRow.setAttribute('class', attributeArr[i]);
+    mainDiv.appendChild(kRow);
+}
+
+
 let keyRow1Space = document.getElementById('keyRow1');
 let keyRow2Space = document.getElementById('keyRow2');
 let keyRow3Space = document.getElementById('keyRow3');
@@ -94,28 +125,36 @@ let textInput = document.getElementById('text');
 let isShift = false;
 let prevButton = '';
 document.addEventListener('keydown', (e) => {
-    console.log(e);
     if(e.key == 'Shift') {
         isShift = true;
         generateButtons(localization);
-        findButton(e, false);
-      
+        addAnimation(e, false);
+        e.preventDefault();
         
     } else if(e.key == 'CapsLock') {
         isShift = !isShift;
         generateButtons(localization);
-        isShift ? findButton(e, false): loseButton(e, false);
+        isShift ? addAnimation(e, false): removeAnimation(e, false);
         e.preventDefault();
+    } else if (e.key == 'Tab') {
+        textInput.value += '   ';
+        addAnimation(e, false);
     } else if (e.key == 'Backspace') {
         textInput.value = textInput.value.slice(0,-1);
-        findButton(e, false);
+        addAnimation(e, false);
+    } else if (e.key == 'Control') {
+        addAnimation(e, false);
     } else if (e.key == 'Alt') {
         if (prevButton == 'Shift') {
             localization = !localization;
             localStorage.setItem('localization', localization);
         }
+    } else if (e.key == 'ArrowUp' || e.key == 'ArrowDown' || e.key == 'ArrowLeft' || e.key == 'ArrowRight') {
+        addAnimation(e, false);
+    } else if (e.key == 'Enter') {
+        textInput.value += '\n';
     } else {
-        findButton(e, true);
+        addAnimation(e, true);
     }
     prevButton = e.key;
 });
@@ -123,37 +162,38 @@ document.addEventListener('keyup', (e) => {
     if(e.key == 'Shift') {
         isShift = false;
         generateButtons(localization);
-        loseButton(e);
+        removeAnimation(e);
 
     } else if(e.key == 'CapsLock') {
         e.preventDefault();
-    } else if (e.key == 'Backspace') {
-        textInput.value = textInput.value.slice(0,-1);
-        loseButton(e);
     } else {
-        loseButton(e);
+        removeAnimation(e);
     } 
   
 });
 document.addEventListener('keypress', (e) => {
+   
     e.preventDefault();
 });
-function findButton(e, isDraw) {
+function addAnimation(e, isDraw) {
     let currenButton;
         currenButton = document.getElementById(e.code);
         currenButton.classList.remove('pressed-animation-back');
         currenButton.classList.add('pressed-animation');
         currenButton.addEventListener('animationend', () => {
+            currenButton.classList.remove('pressed-animation');
             currenButton.classList.add('pressed');
         });
         isDraw ? textInput.value += e.key : textInput.value;  
 }
-function loseButton(e) {
+
+function removeAnimation(e) {
     let currenButton;
         currenButton = document.getElementById(e.code);
         currenButton.classList.remove('pressed-animation');
         currenButton.classList.add('pressed-animation-back');
         currenButton.addEventListener('animationend', () => {
+            currenButton.classList.remove('pressed-animation-back');
             currenButton.classList.remove('pressed');
         });
 }
@@ -180,22 +220,47 @@ function generateButtons(localization) {
                     mouseDown(button[3]);
 
                 }
-            }
+            } 
+
+            
             z.setAttribute('id', button[0]);
             /* ADD EVENTS */
             function mouseDown(param) {
                 z.addEventListener('mousedown', () => {
-                    z.classList.add('pressed');
-                    console.log(param);
-                    textInput.value += param;
+                    if (param == 'ShiftLeft' || param == 'CapsLock') {
+                        isShift = !isShift;
+                        generateButtons(localization);
+                        isShift ? addAnimation({code: param}, false) : removeAnimation({code: param}, false);
+                    } else if (param == 'Space') {
+                        textInput.value += ' ';
+                        addAnimation({code: param}, false);
+                    } else if (param == 'Tab') {
+                        addAnimation({code: param}, false);
+                        textInput.value += '  ';
+                    } else if (param == 'Enter') {
+                        addAnimation({code: param}, false);
+                        textInput.value += '\n';
+                    } else if (param == 'Backspace') {
+                        textInput.value = textInput.value.slice(0,-1);
+                    } else if (param == 'ControlLeft' || param == 'ControlRight' || param == 'Win' || param == 'AltLeft' || param == 'ShiftRight' || param == '&#8593;' || param == '&#8595;' || param == '&#8592;' || param == '&#8594;') {
+                        z.classList.add('pressed');
+                    } else {
+                        z.classList.add('pressed');
+                        textInput.value += param;
+                    }
+                });
+                z.addEventListener('mouseup', () => {
+                    if (param == 'Enter') {
+                        removeAnimation({code: param});
+                    } else if (param == 'Space') {
+                        removeAnimation({code: param});
+                    }else z.classList.remove('pressed');
                 });
             }
-            z.addEventListener('mouseup', () => {
-                z.classList.remove('pressed');
-            });
+            
             /* Append node to DOM */
             btns.push(z);
-                keyboardStringWrapper[i].appendChild(z);
+            keyboardStringWrapper[i].appendChild(z);
         });
     });
 }
